@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -68,6 +71,7 @@ fun PersonajeCard(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp, vertical = 4.dp)
+            .clip(RoundedCornerShape(10.dp))
             .animateContentSize(
                 animationSpec = spring(
                     dampingRatio = Spring.DampingRatioMediumBouncy,
@@ -78,8 +82,13 @@ fun PersonajeCard(
         Column(modifier = Modifier.padding(5.dp)) {
             Row {
                 Surface(
-                    modifier.size(120.dp),
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
+                    modifier.size(125.dp),
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
+                    shape = MaterialTheme.shapes.medium,
+                    border = BorderStroke(
+                        width = 3.dp,
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 ) {
                     AsyncImage(
                         model = personaje.image,
